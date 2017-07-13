@@ -7,6 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.soul.learn.power.test.ViolateTest;
+
+import java.math.BigInteger;
+
 public class MainActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
@@ -40,6 +44,9 @@ public class MainActivity extends AppCompatActivity {
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        ViolateTest.getValue1();
+        ViolateTest.getValue2();
     }
 
 }

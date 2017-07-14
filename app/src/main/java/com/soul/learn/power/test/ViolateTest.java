@@ -3,6 +3,8 @@ package com.soul.learn.power.test;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * Created by chenjianhua on 2017/7/13.

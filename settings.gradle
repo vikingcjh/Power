@@ -1,1 +1,1 @@
-include ':app', ':mathlib'
+include ':app', ':mathlib', ':safelib'

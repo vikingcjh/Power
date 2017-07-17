@@ -62,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
         Outer outer = new Outer();
         Outer.Inner1 inner1 = outer.new Inner1();
 //        Outer.Inner1 inner1 = new Outer.Inner1();
+        Test.caesarTest();
+        Test.aesTest();
     }
 
 }

@@ -47,4 +47,8 @@ public class Test {
         LogUtil.i("desc-aes:"+result3);
     }
 
+    public static void testapi(){
+        
+    }
+
 }

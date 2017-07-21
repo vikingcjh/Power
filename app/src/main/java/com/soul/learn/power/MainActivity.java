@@ -1,5 +1,6 @@
 package com.soul.learn.power;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -8,7 +9,12 @@ import android.view.MenuItem;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.soul.learn.power.busEvent.AsyncThreadEvent;
+import com.soul.learn.power.busEvent.BackgroundEvent;
+import com.soul.learn.power.busEvent.PostingThreadEvent;
+import com.soul.learn.power.busEvent.ShowMainEvent;
 import com.soul.learn.power.log.LogUtil;
 import com.soul.learn.power.test.Ifacetest;
 import com.soul.learn.power.test.Outer;
@@ -17,6 +23,10 @@ import com.soul.learn.power.test.SubClass;
 import com.soul.learn.power.test.Test;
 import com.soul.learn.power.test.ViolateTest;
 import com.soul.learn.power.test.ProxyTest;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,7 +41,8 @@ public class MainActivity extends AppCompatActivity {
     BottomNavigationView navigation;
     @BindView(R.id.container)
     LinearLayout container;
-//    private TextView mTextMessage;
+
+    private Context context;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -46,7 +57,8 @@ public class MainActivity extends AppCompatActivity {
                     message.setText(R.string.title_dashboard);
                     return true;
                 case R.id.navigation_notifications:
-                    message.setText(R.string.title_notifications);
+//                    message.setText(R.string.title_notifications);
+                    EventBus.getDefault().post(new ShowMainEvent("hello world!!"));
                     return true;
             }
             return false;
@@ -60,8 +72,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-//        mTextMessage = (TextView) findViewById(R.id.message);
-//        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        context = this;
+        findViewById(R.id.container);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         ViolateTest.getValue1();
@@ -80,5 +92,62 @@ public class MainActivity extends AppCompatActivity {
         ProxyTest.getInstance().test();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
+    /**
+     * 主线程 不能进行耗时操作
+     * @param event
+     */
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onShowMainUi(ShowMainEvent event) {
+        message.setText(event.message);
+        Toast.makeText(context,event.message,Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * background 事件，公用background线程，不能进行耗时操作
+     * @param event
+     */
+    @Subscribe(threadMode = ThreadMode.BACKGROUND)
+    public void onBackgroundEvent(BackgroundEvent event) {
+
+    }
+
+    /**
+     * 与poster同线程
+     * @param event
+     */
+    @Subscribe(threadMode = ThreadMode.POSTING)
+    public void onPostingThreadEvent(PostingThreadEvent event) {
+
+    }
+
+    /**
+     * 异步线程处理
+     * @param event
+     */
+    @Subscribe(threadMode = ThreadMode.ASYNC)
+    public void onAsycThreadEvent(AsyncThreadEvent event) {
+
+    }
+
+    private void sendEvent(String msg){
+//        EventBus.getDefault().post(new ShowMainEvent("hello world!!"));
+        EventBus.getDefault().post(new ShowMainEvent(msg));
+    }
 }

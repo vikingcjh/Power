@@ -6,8 +6,10 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,6 +17,11 @@ import com.soul.learn.power.busEvent.AsyncThreadEvent;
 import com.soul.learn.power.busEvent.BackgroundEvent;
 import com.soul.learn.power.busEvent.PostingThreadEvent;
 import com.soul.learn.power.busEvent.ShowMainEvent;
+import com.soul.learn.power.db.BookDao;
+import com.soul.learn.power.db.PkgDao;
+import com.soul.learn.power.db.UserDao;
+import com.soul.learn.power.db.entity.Book;
+import com.soul.learn.power.db.entity.User;
 import com.soul.learn.power.log.LogUtil;
 import com.soul.learn.power.test.Ifacetest;
 import com.soul.learn.power.test.Outer;
@@ -28,21 +35,32 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.message)
     TextView message;
     @BindView(R.id.content)
-    FrameLayout content;
+    RelativeLayout content;
     @BindView(R.id.navigation)
     BottomNavigationView navigation;
     @BindView(R.id.container)
     LinearLayout container;
+    @BindView(R.id.btn)
+    Button btn;
+    @BindView(R.id.tv_user)
+    TextView tvUser;
+
 
     private Context context;
+    private UserDao userDao;
+    private PkgDao pkgDao;
+    private BookDao bookDao;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -73,7 +91,9 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         context = this;
-        findViewById(R.id.container);
+        userDao = ((PowerApplication)getApplication()).getDaoSession().getUserDao();
+        bookDao = ((PowerApplication)getApplication()).getDaoSession().getBookDao();
+//        findViewById(R.id.container);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         ViolateTest.getValue1();
@@ -107,6 +127,41 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+    }
+
+
+    @OnClick({R.id.btn})
+    public void onBtnClick(Button btn){
+        switch (btn.getId()) {
+            case R.id.btn:
+                Book book = new Book();
+//                book.setId(null);
+                book.setName("java"+System.currentTimeMillis());
+                book.setPage(60);
+                bookDao.insert(book);
+                /*User user = new User();
+                user.setId(2);
+                user.setAge(20);
+                user.setName("test"+System.currentTimeMillis());
+                userDao.insert(user);
+
+                List<User> list = userDao.loadAll();
+                StringBuffer sb = new StringBuffer();
+                for (User user1 : list) {
+                    sb.append("id:");
+                    sb.append(user1.getId());
+                    sb.append("\r\n");
+                    sb.append("name:");
+                    sb.append(user1.getName());
+                    sb.append("\r\n");
+                    sb.append("age:");
+                    sb.append(user1.getAge());
+                }
+                tvUser.setText(sb.toString());*/
+
+                break;
+        }
+
     }
 
     /**

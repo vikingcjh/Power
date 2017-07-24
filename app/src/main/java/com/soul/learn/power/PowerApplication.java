@@ -1,7 +1,10 @@
 package com.soul.learn.power;
 
 import android.app.Application;
+import android.database.sqlite.SQLiteDatabase;
 
+import com.soul.learn.power.db.DaoMaster;
+import com.soul.learn.power.db.DaoSession;
 import com.squareup.leakcanary.LeakCanary;
 
 /**
@@ -9,6 +12,8 @@ import com.squareup.leakcanary.LeakCanary;
  */
 
 public class PowerApplication extends Application {
+    private DaoSession daoSession;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -19,6 +24,20 @@ public class PowerApplication extends Application {
             return;
         }
         LeakCanary.install(this);
+
+        initGreenDao();
+
+    }
+
+    private void initGreenDao(){
+        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "test.db");
+        SQLiteDatabase db = helper.getWritableDatabase();
+        DaoMaster master = new DaoMaster(db);
+        daoSession = master.newSession();
+    }
+
+    public DaoSession getDaoSession() {
+        return daoSession;
     }
 
 }

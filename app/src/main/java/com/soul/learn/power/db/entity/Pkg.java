@@ -10,54 +10,43 @@ import org.greenrobot.greendao.annotation.Generated;
 @Entity
 public class Pkg {
     @Id(autoincrement = true)
-    private long id;
+    private Long id;
     private String name;
     private int versionCode;
     private String pkg;
-
-    @Generated(hash = 1308218048)
-    public Pkg(long id, String name, int versionCode, String pkg) {
+    @Generated(hash = 1421751308)
+    public Pkg(Long id, String name, int versionCode, String pkg) {
         this.id = id;
         this.name = name;
         this.versionCode = versionCode;
         this.pkg = pkg;
     }
-
     @Generated(hash = 1942651913)
     public Pkg() {
     }
-
-    public long getId() {
-        return id;
+    public Long getId() {
+        return this.id;
     }
-
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
-
     public String getName() {
-        return name;
+        return this.name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
-
     public int getVersionCode() {
-        return versionCode;
+        return this.versionCode;
     }
-
     public void setVersionCode(int versionCode) {
         this.versionCode = versionCode;
     }
-
     public String getPkg() {
-        return pkg;
+        return this.pkg;
     }
-
     public void setPkg(String pkg) {
         this.pkg = pkg;
     }
-
 
 }

@@ -134,13 +134,7 @@ public class MainActivity extends AppCompatActivity {
     public void onBtnClick(Button btn){
         switch (btn.getId()) {
             case R.id.btn:
-                Book book = new Book();
-//                book.setId(null);
-                book.setName("java"+System.currentTimeMillis());
-                book.setPage(60);
-                bookDao.insert(book);
-                /*User user = new User();
-                user.setId(2);
+                User user = new User();
                 user.setAge(20);
                 user.setName("test"+System.currentTimeMillis());
                 userDao.insert(user);
@@ -156,8 +150,9 @@ public class MainActivity extends AppCompatActivity {
                     sb.append("\r\n");
                     sb.append("age:");
                     sb.append(user1.getAge());
+                    sb.append("\r\n");
                 }
-                tvUser.setText(sb.toString());*/
+                tvUser.setText(sb.toString());
 
                 break;
         }

@@ -17,11 +17,13 @@ import com.soul.learn.power.busEvent.AsyncThreadEvent;
 import com.soul.learn.power.busEvent.BackgroundEvent;
 import com.soul.learn.power.busEvent.PostingThreadEvent;
 import com.soul.learn.power.busEvent.ShowMainEvent;
+import com.soul.learn.power.busEvent.ShowUserDbEvent;
 import com.soul.learn.power.db.BookDao;
 import com.soul.learn.power.db.PkgDao;
 import com.soul.learn.power.db.UserDao;
 import com.soul.learn.power.db.entity.Book;
 import com.soul.learn.power.db.entity.User;
+import com.soul.learn.power.db.model.UserDbManager;
 import com.soul.learn.power.log.LogUtil;
 import com.soul.learn.power.test.Ifacetest;
 import com.soul.learn.power.test.Outer;
@@ -40,6 +42,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import io.reactivex.Observable;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -139,7 +142,8 @@ public class MainActivity extends AppCompatActivity {
                 user.setName("test"+System.currentTimeMillis());
                 userDao.insert(user);
 
-                List<User> list = userDao.loadAll();
+                UserDbManager.getInstance().getAllList();
+                /*List<User> list = userDao.loadAll();
                 StringBuffer sb = new StringBuffer();
                 for (User user1 : list) {
                     sb.append("id:");
@@ -152,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
                     sb.append(user1.getAge());
                     sb.append("\r\n");
                 }
-                tvUser.setText(sb.toString());
+                tvUser.setText(sb.toString());*/
 
                 break;
         }
@@ -194,6 +198,11 @@ public class MainActivity extends AppCompatActivity {
     @Subscribe(threadMode = ThreadMode.ASYNC)
     public void onAsycThreadEvent(AsyncThreadEvent event) {
 
+    }
+
+    @Subscribe(threadMode = ThreadMode.POSTING)
+    public void onShowUserDbEvent(ShowUserDbEvent event) {
+        tvUser.setText(event.message);
     }
 
     private void sendEvent(String msg){

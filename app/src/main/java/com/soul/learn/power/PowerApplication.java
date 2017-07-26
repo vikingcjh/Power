@@ -1,6 +1,7 @@
 package com.soul.learn.power;
 
 import android.app.Application;
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.soul.learn.power.db.DaoMaster;
@@ -12,11 +13,13 @@ import com.squareup.leakcanary.LeakCanary;
  */
 
 public class PowerApplication extends Application {
-    private DaoSession daoSession;
+    private static Context mContext;
+    private static DaoSession daoSession;
 
     @Override
     public void onCreate() {
         super.onCreate();
+        mContext = this;
 
         if (LeakCanary.isInAnalyzerProcess(this)) {
             // This process is dedicated to LeakCanary for heap analysis.
@@ -29,6 +32,10 @@ public class PowerApplication extends Application {
 
     }
 
+    public static Context getGlobalContext() {
+        return mContext;
+    }
+
     private void initGreenDao(){
         DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "test.db");
         SQLiteDatabase db = helper.getWritableDatabase();
@@ -36,7 +43,7 @@ public class PowerApplication extends Application {
         daoSession = master.newSession();
     }
 
-    public DaoSession getDaoSession() {
+    public static DaoSession getDaoSession() {
         return daoSession;
     }
 

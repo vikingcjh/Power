@@ -5,26 +5,25 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.soul.learn.power.busEvent.AsyncThreadEvent;
-import com.soul.learn.power.busEvent.BackgroundEvent;
-import com.soul.learn.power.busEvent.PostingThreadEvent;
-import com.soul.learn.power.busEvent.ShowMainEvent;
-import com.soul.learn.power.busEvent.ShowUserDbEvent;
+import com.soul.learn.power.busevent.AsyncThreadEvent;
+import com.soul.learn.power.busevent.BackgroundEvent;
+import com.soul.learn.power.busevent.PostingThreadEvent;
+import com.soul.learn.power.busevent.ShowMainEvent;
+import com.soul.learn.power.busevent.ShowUserDbEvent;
 import com.soul.learn.power.db.BookDao;
 import com.soul.learn.power.db.PkgDao;
 import com.soul.learn.power.db.UserDao;
-import com.soul.learn.power.db.entity.Book;
-import com.soul.learn.power.db.entity.User;
 import com.soul.learn.power.db.model.UserDbManager;
 import com.soul.learn.power.log.LogUtil;
+import com.soul.learn.power.sdkmanager.GetSdkModel;
 import com.soul.learn.power.test.Ifacetest;
 import com.soul.learn.power.test.Outer;
 import com.soul.learn.power.test.PClass;
@@ -37,12 +36,9 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import io.reactivex.Observable;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -137,26 +133,21 @@ public class MainActivity extends AppCompatActivity {
     public void onBtnClick(Button btn){
         switch (btn.getId()) {
             case R.id.btn:
-                User user = new User();
+                int n = 1;
+                Integer in = new Integer(n);
+                String str = "hello   world";
+                int nhash = str.hashCode();
+                Log.i("niodata", "nhash = " + nhash);
+
+                new GetSdkModel().getUpdateInfo();
+
+
+                /*User user = new User();
                 user.setAge(20);
                 user.setName("test"+System.currentTimeMillis());
-                userDao.insert(user);
+                userDao.insert(user);*/
 
-                UserDbManager.getInstance().getAllList();
-                /*List<User> list = userDao.loadAll();
-                StringBuffer sb = new StringBuffer();
-                for (User user1 : list) {
-                    sb.append("id:");
-                    sb.append(user1.getId());
-                    sb.append("\r\n");
-                    sb.append("name:");
-                    sb.append(user1.getName());
-                    sb.append("\r\n");
-                    sb.append("age:");
-                    sb.append(user1.getAge());
-                    sb.append("\r\n");
-                }
-                tvUser.setText(sb.toString());*/
+//                UserDbManager.getInstance().getAllList();
 
                 break;
         }

@@ -4,6 +4,7 @@ package com.soul.learn.power.net;
 
 import com.soul.learn.power.bean.AppDetailsModel;
 import com.soul.learn.power.bean.BaseResult;
+import com.soul.learn.power.bean.SdkUpdateBean;
 
 import java.util.List;
 
@@ -26,6 +27,23 @@ public interface ApiService {
             @Query(Params.APP_SIZE) int size,
             @Query(Params.APP_PAGE) int page);
 
+
+    //    111.206.210.227
+    @GET("credit/sdkupgrade/getByAppId")
+    @Headers({Params.HEADER_ACCEPT_JSON,
+            Params.HEADER_ENCODE_GZIP})
+    Observable<SdkUpdateBean> getSdkUpdateInfo(
+            @Query("appId") String appid,
+            @Query("channelId") String cid,
+            @Query("IMEI") String imei,
+            @Query("wiredMac") String wiremac,
+            @Query("hostPackageName") String hostpkg,
+            @Query("hostVersionCode") String hostvcode,
+            @Query("deviceModel") String deviemodel,
+            @Query("osVersion") String osversion,
+            @Query("versionCode") String versioncode,
+            @Query("pkg") String pkg
+    );
 
 
 

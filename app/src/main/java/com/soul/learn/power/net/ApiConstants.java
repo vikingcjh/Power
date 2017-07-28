@@ -8,6 +8,7 @@ package com.soul.learn.power.net;
 public class ApiConstants {
     public static final String STORE_HOST = "";
     public static final String VEDIO_HOST = "";
+    public static final String SDK_HOST = "";
 
     public static final String STORE_CODE = "dk_h_test";
 
@@ -25,6 +26,9 @@ public class ApiConstants {
                 break;
             case HostType.VEDIO_API:
                 host = VEDIO_HOST;
+                break;
+            case HostType.SDK_API:
+                host = SDK_HOST;
                 break;
             default:
                 host = "";

@@ -4,7 +4,7 @@ package com.soul.learn.power.bean;
  * Created by chenjianhua on 2017/7/14.
  */
 
-public class NewsBean {
+public class SdkUpdateBean {
 
 
     /**

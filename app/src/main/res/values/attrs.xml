@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="testView">
+        <attr name="text" format="string" />
+        <attr name="testtextColor" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="RoundProgressBar">
+        <attr name="roundColor" format="color"/>
+        <attr name="roundProgressColor" format="color"/>
+        <attr name="roundWidth" format="dimension"/>
+        <attr name="textColor" format="color"/>
+        <attr name="textSize" format="dimension"/>
+        <attr name="max" format="integer"/>
+        <attr name="textIsDisplayable" format="boolean"/>
+        <attr name="style">
+            <enum name="STROKE" value="0"/>
+            <enum name="FILL" value="1"/>
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="SlidingMenu">
+        <attr name="mode">
+            <enum name="left" value="0"/>
+            <enum name="right" value="1"/>
+        </attr>
+        <attr name="viewAbove" format="reference"/>
+        <attr name="viewBehind" format="reference"/>
+        <attr name="behindOffset" format="dimension"/>
+        <attr name="behindWidth" format="dimension"/>
+        <attr name="behindScrollScale" format="float"/>
+        <attr name="touchModeAbove">
+            <enum name="margin" value="0"/>
+            <enum name="fullscreen" value="1"/>
+        </attr>
+        <attr name="touchModeBehind">
+            <enum name="margin" value="0"/>
+            <enum name="fullscreen" value="1"/>
+        </attr>
+        <attr name="shadowDrawable" format="reference"/>
+        <attr name="shadowWidth" format="dimension"/>
+        <attr name="fadeEnabled" format="boolean"/>
+        <attr name="fadeDegree" format="float"/>
+        <attr name="selectorEnabled" format="boolean"/>
+        <attr name="selectorDrawable" format="reference"/>
+    </declare-styleable>
+    <declare-styleable name="ScrollBar">
+        <attr name="scrolBarDrawable" format="reference"/>
+        <attr name="scrolBarBackgroundDrawable" format="reference"/>
+        <attr name="scrolBarMode">
+            <enum name="point" value="0"/>
+            <enum name="bar" value="1"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="myviewpager">
+        <attr name="skip_left_right" format="boolean"/>
+    </declare-styleable>
+
+    <!-- Defines the custom XML attributes supported for a HorizontalListView -->
+    <declare-styleable name="HorizontalListView">
+        <attr name="dividerWidth" format="dimension"/>
+        <attr name="android:divider"/>
+        <attr name="android:requiresFadingEdge"/>
+        <attr name="android:fadingEdgeLength"/>
+    </declare-styleable>
+
+    <declare-styleable name="MetroView">
+        <attr name="android:src"/>
+        <attr name="shadowingWidth" format="dimension"/>
+        <attr name="topShadowingWidth" format="dimension"/>
+        <attr name="bottomShadowingWidth" format="dimension"/>
+        <attr name="leftShadowingWidth" format="dimension"/>
+        <attr name="rightShadowingWidth" format="dimension"/>
+        <attr name="bgcolor" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="TextViewMetroView">
+        <attr name="android:src"/>
+        <attr name="shadowingbackgroundwidth" format="dimension"/>
+        <attr name="shadowingbackgroundHeight" format="dimension"/>
+        <attr name="shadowingbottom" format="dimension"/>
+        <attr name="shadowingleft" format="dimension"/>
+        <attr name="shadowingright" format="dimension"/>
+        <attr name="shadowingtop" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="ScrollView">
+        <attr name="offset" format="dimension"/>
+        <attr name="ischange" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="MetroGridView">
+        <attr name="numColumns" format="integer"/>
+        <attr name="itemWidth" format="dimension"/>
+        <attr name="itemHeight" format="dimension"/>
+        <attr name="itemSpaceTop" format="dimension"/>
+        <attr name="itemSpaceLeft" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="RoundedImageView">
+        <attr name="corner_radius" format="dimension"/>
+        <attr name="border_width" format="dimension"/>
+        <attr name="border_color" format="color"/>
+        <attr name="mutate_background" format="boolean"/>
+        <attr name="oval" format="boolean"/>
+        <attr name="android:scaleType"/>
+    </declare-styleable>
+
+    <!--homepage banner-->
+    <declare-styleable name="ImageCoverFlowView">
+        <attr name="visibleImage" format="integer"/>
+        <attr name="reflectionHeight" format="fraction"/>
+        <attr name="reflectionGap" format="dimension"/>
+        <attr name="topImageClickEnable" format="boolean"/>
+        <attr name="coverflowGravity" format="enum">
+            <enum name="top" value="0"/>
+            <enum name="bottom" value="1"/>
+            <enum name="center_vertical" value="2"/>
+        </attr>
+        <attr name="coverflowLayoutMode" format="enum">
+            <enum name="match_parent" value="0"/>
+            <enum name="wrap_content" value="1"/>
+        </attr>
+    </declare-styleable>
+
+    <!--switch button-->
+    <declare-styleable name="SwitchButton">
+        <attr name="thumbDrawable" format="reference"/>
+        <attr name="thumbColor" format="color|reference"/>
+        <attr name="thumbMargin" format="dimension|reference"/>
+        <attr name="thumbMarginTop" format="dimension|reference"/>
+        <attr name="thumbMarginBottom" format="dimension|reference"/>
+        <attr name="thumbMarginLeft" format="dimension|reference"/>
+        <attr name="thumbMarginRight" format="dimension|reference"/>
+        <attr name="thumbWidth" format="dimension|reference"/>
+        <attr name="thumbHeight" format="dimension|reference"/>
+        <attr name="thumbRadius" format="dimension|reference"/>
+        <attr name="backRadius" format="dimension|reference"/>
+        <attr name="backDrawable" format="reference"/>
+        <attr name="backColor" format="color|reference"/>
+        <attr name="fadeBack" format="boolean"/>
+        <attr name="backMeasureRatio" format="float"/>
+        <attr name="animationDuration" format="integer"/>
+        <attr name="tintColor" format="color|reference"/>
+        <attr name="textOn" format="string"/>
+        <attr name="textOff" format="string"/>
+        <attr name="textMarginH" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="JellyToggleButton">
+
+        <attr name="jtbLeftBackgroundColor" format="color|reference"/>
+        <attr name="jtbRightBackgroundColor" format="color|reference"/>
+        <attr name="jtbLeftThumbColor" format="color|reference"/>
+        <attr name="jtbRightThumbColor" format="color|reference"/>
+        <attr name="jtbLeftTextColor" format="color|reference"/>
+        <attr name="jtbRightTextColor" format="color|reference"/>
+        <attr name="jtbLeftTextTypeface" format="string"/>
+        <attr name="jtbRightTextTypeface" format="string"/>
+        <attr name="jtbLeftTextSize" format="dimension|reference"/>
+        <attr name="jtbRightTextSize" format="dimension|reference"/>
+        <attr name="jtbLeftText" format="string|reference"/>
+        <attr name="jtbRightText" format="string|reference"/>
+
+        <attr name="jtbTextMarginLeft" format="dimension|reference"/>
+        <attr name="jtbTextMarginRight" format="dimension|reference"/>
+        <attr name="jtbTextMarginTop" format="dimension|reference"/>
+        <attr name="jtbTextMarginBottom" format="dimension|reference"/>
+        <attr name="jtbTextMarginCenter" format="dimension|reference"/>
+
+        <attr name="jtbThumbRadius" format="dimension|reference"/>
+
+        <attr name="jtbBackgroundMeasureRatioValue" format="float|reference"/>
+        <attr name="jtbBackgroundRadius" format="dimension|reference"/>
+
+        <attr name="jtbColorChangeType" format="enum">
+            <enum name="rgb" value="0"/>
+            <enum name="hsv" value="1"/>
+        </attr>
+
+        <attr name="jtbJelly" format="enum">
+            <enum name="itself" value="0"/>
+            <enum name="lazy_tremble_head_fatty" value="1"/>
+            <enum name="lazy_tremble_head_slim_jim" value="2"/>
+            <enum name="lazy_tremble_tail_fatty" value="3"/>
+            <enum name="lazy_tremble_tail_slim_jim" value="4"/>
+            <enum name="lazy_tremble_body_fatty" value="5"/>
+            <enum name="lazy_tremble_body_slim_jim" value="6"/>
+            <enum name="lazy_stiff_fatty" value="7"/>
+            <enum name="lazy_stiff_slim_jim" value="8"/>
+            <enum name="active_tremble_head_fatty" value="9"/>
+            <enum name="active_tremble_head_slim_jim" value="10"/>
+            <enum name="active_tremble_tail_fatty" value="11"/>
+            <enum name="active_tremble_tail_slim_jim" value="12"/>
+            <enum name="active_tremble_body_fatty" value="13"/>
+            <enum name="active_tremble_body_slim_jim" value="14"/>
+            <enum name="active_stiff_fatty" value="15"/>
+            <enum name="active_stiff_slim_jim" value="16"/>
+            <enum name="random" value="17"/>
+        </attr>
+
+        <attr name="jtbEaseType" format="enum">
+            <enum name="ease_in_sine" value="0"/>
+            <enum name="ease_out_sine" value="1"/>
+            <enum name="ease_in_out_sine" value="2"/>
+            <enum name="ease_in_quad" value="3"/>
+            <enum name="ease_out_quad" value="4"/>
+            <enum name="ease_in_out_quad" value="5"/>
+            <enum name="ease_in_cubic" value="6"/>
+            <enum name="ease_out_cubic" value="7"/>
+            <enum name="ease_in_out_cubic" value="8"/>
+            <enum name="ease_in_quart" value="9"/>
+            <enum name="ease_out_quart" value="10"/>
+            <enum name="ease_in_out_quart" value="11"/>
+            <enum name="ease_in_quint" value="12"/>
+            <enum name="ease_out_quint" value="13"/>
+            <enum name="ease_in_out_quint" value="14"/>
+            <enum name="ease_in_expo" value="15"/>
+            <enum name="ease_out_expo" value="16"/>
+            <enum name="ease_in_out_expo" value="17"/>
+            <enum name="ease_in_circ" value="18"/>
+            <enum name="ease_out_circ" value="19"/>
+            <enum name="ease_in_out_circ" value="20"/>
+            <enum name="ease_in_back" value="21"/>
+            <enum name="ease_out_back" value="22"/>
+            <enum name="ease_in_out_back" value="23"/>
+            <enum name="ease_in_elastic" value="24"/>
+            <enum name="ease_out_elastic" value="25"/>
+            <enum name="ease_in_out_elastic" value="26"/>
+            <enum name="ease_in_bounce" value="27"/>
+            <enum name="ease_out_bounce" value="28"/>
+            <enum name="ease_in_out_bounce" value="29"/>
+            <enum name="linear" value="30"/>
+        </attr>
+
+        <attr name="jtbDuration" format="integer|reference"/>
+
+        <attr name="jtbTouchMoveRatioValue" format="float|reference"/>
+        <attr name="jtbBezierControlValue" format="float|reference"/>
+        <attr name="jtbStretchDistanceRatioValue" format="float|reference"/>
+        <attr name="jtbBezierScaleRatioValue" format="float|reference"/>
+
+        <attr name="jtbMoveToSameStateCallListener" format="boolean|reference"/>
+        <attr name="jtbDraggable" format="boolean|reference"/>
+
+    </declare-styleable>
+</resources>

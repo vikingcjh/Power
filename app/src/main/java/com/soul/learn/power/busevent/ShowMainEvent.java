@@ -1,13 +1,13 @@
-package com.soul.learn.power.busEvent;
+package com.soul.learn.power.busevent;
 
 /**
  * Created by chenjianhua on 2017/7/21.
  */
 
-public class PostingThreadEvent {
+public class ShowMainEvent {
     public final String message;
 
-    public PostingThreadEvent(String message) {
+    public ShowMainEvent(String message) {
         this.message = message;
     }
 }

@@ -1,7 +1,7 @@
 package com.soul.learn.power.db.model;
 
 import com.soul.learn.power.PowerApplication;
-import com.soul.learn.power.busEvent.ShowUserDbEvent;
+import com.soul.learn.power.busevent.ShowUserDbEvent;
 import com.soul.learn.power.db.UserDao;
 import com.soul.learn.power.db.entity.User;
 

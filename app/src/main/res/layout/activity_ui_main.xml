@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false">
+
+    <RelativeLayout
+        android:id="@+id/rl_navi"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_90">
+        <View
+            android:id="@+id/title_line"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/px_1"
+            android:layout_alignParentBottom="true"
+            android:background="@color/color_9aeeeeff"/>
+
+        <com.soul.learn.power.widget.custom.CstNavibar
+            android:id="@+id/cst_navibar"
+            android:layout_marginLeft="@dimen/dp_60"
+            android:layout_marginRight="@dimen/dp_60"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_90"
+            android:descendantFocusability="afterDescendants"/>
+    </RelativeLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/main_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/dp_60"
+        android:layout_marginRight="@dimen/dp_60"
+        android:layout_below="@id/rl_navi"
+        android:descendantFocusability="afterDescendants"/>
+</RelativeLayout>
+

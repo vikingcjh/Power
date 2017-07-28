@@ -5,4 +5,97 @@
     <string name="title_notifications">Notifications</string>
 
     <string name="btn_getdb">getDb</string>
+
+
+    <string name="download">下载</string>
+
+    <!-- loadingdialod -->
+    <string name="loading">加载中</string>
+
+    <!-- 管理 -->
+    <!-- 应用更新 -->
+    <string name="updateapp_tv_tag1">太棒了,所有应用都是最</string>
+    <string name="updateapp_tv_tag2">的!</string>
+    <string name="updateall">更新全部</string>
+    <string name="hasappupdate">个应用可更新</string>
+    <string name="update_version">版本 :</string>
+    <string name="update_appsize">大小 :</string>
+    <string name="update_time">时间 :</string>
+    <string name="update">更新</string>
+    <string name="ignore">忽略</string>
+    <string name="ok">确定</string>
+    <string name="cannel">取消</string>
+    <string name="version">版本</string>
+    <string name="size">大小</string>
+    <string name="time">时间</string>
+    <string name="app_update_log">更新日志</string>
+    <string name="open">打开</string>
+    <string name="de">的</string>
+    <string name="update_all">更新全部</string>
+    <string name="app_update_version">版本&#160;:&#160;</string>
+    <string name="app_update_size">大小&#160;:&#160;</string>
+    <string name="app_update_time">时间&#160;:&#160;</string>
+
+    <string name="download_state_pause">暂停</string>
+
+    <!-- 设置页文本 -->
+    <string name="set_menu_about">关于</string>
+    <string name="set_menu_about_us">关于我们</string>
+    <string name="set_menu_set">设置</string>
+    <string name="set_app_version">版本:%1$s</string>
+    <string name="set_check_update">检查更新</string>
+    <string name="set_user_plan">用户体验计划</string>
+    <string name="set_clean_done">清理完成</string>
+
+    <string name="set_clear_all">清空</string>
+    <string name="set_package_cache">安装包/缓存</string>
+    <string name="set_auto_update">自动更新</string>
+    <string name="set_save_flow">节约流量</string>
+
+    <!-- 搜索页文本 -->
+    <string name="search_title_hot">热门</string>
+    <string name="search_title_history">历史</string>
+    <string name="search_clear_history">全部清除</string>
+    <string name="search_result">搜索结果</string>
+    <string name="search_edit_hint">请输入关键字</string>
+    <string name="search_result_nodata">没有符合的结果，请检查关键字</string>
+
+    <!-- 异常信息 -->
+    <string name="err_load_failed">加载失败</string>
+    <string name="err_retry">请重试</string>
+    <string name="err_net_failed">网络异常，请保持网络通畅</string>
+    <string name="err_net_retry">请重新连接网络</string>
+
+    <!-- 下载文本 -->
+    <string name="dl_download">下载</string>
+    <string name="dl_downloading">下载中</string>
+    <string name="dl_update">更新</string>
+    <string name="dl_start">打开</string>
+    <string name="dl_pause">暂停</string>
+
+    <!--账户登录-->
+    <string name="free_member">免费会员</string>
+    <string name="vip_member">VIP会员</string>
+    <string name="high_vip_member">高级VIP会员</string>
+
+    <!--分页加载-->
+    <string name="no_more_refresh">没有更多更新</string>
+    <string name="onloading">正在加载中...</string>
+    <string name="history_record">历史记录</string>
+    <string name="clearing">正在清空</string>
+    <string name="clear_done">清理完成</string>
+
+    <string name="default_on_text">On</string>
+    <string name="default_off_text">Off</string>
+
+    <string name="downloading">下载中</string>
+    <string name="waitting">等待中</string>
+    <string name="updating">更新中</string>
+    <string name="installing">安装中</string>
+    <string name="retring">重试中</string>
+
+    <string name="detail_app_open">打开</string>
+    <string name="detail_app_install">安装</string>
+    <string name="detail_app_update">更新</string>
+    <string name="detail_app_uninstall">卸载</string>
 </resources>

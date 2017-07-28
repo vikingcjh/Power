@@ -1,5 +1,6 @@
 package com.soul.learn.power.net;
 
+import android.content.Context;
 import android.util.SparseArray;
 
 import com.google.gson.Gson;
@@ -8,7 +9,24 @@ import com.soul.learn.power.PowerApplication;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.security.KeyStore;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.security.cert.CertificateException;
+import java.security.cert.CertificateFactory;
+import java.security.cert.X509Certificate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
+
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.TrustManagerFactory;
+import javax.net.ssl.X509TrustManager;
 
 import okhttp3.Cache;
 import okhttp3.Interceptor;
@@ -30,7 +48,6 @@ public class Api {
     //连接时长，单位：毫秒
     public static final int CONNECT_TIME_OUT = 8000;
 
-
     public OkHttpClient okHttpClient;
     public Retrofit retrofit;
     public ApiService apiService;
@@ -38,20 +55,13 @@ public class Api {
 
     /*************************缓存设置*********************/
 /*
-   1. noCache 不使用缓存，全部走网络
-
+    1. noCache 不使用缓存，全部走网络
     2. noStore 不使用缓存，也不存储缓存
-
     3. onlyIfCached 只使用缓存
-
     4. maxAge 设置最大失效时间，失效则不使用 需要服务器配合
-
     5. maxStale 设置最大失效时间，失效则不使用 需要服务器配合
-
     6. minFresh 设置有效时间
-
     7. FORCE_NETWORK 只走网络
-
     8. FORCE_CACHE 只走缓存*/
 
     /**
@@ -69,15 +79,14 @@ public class Api {
      */
     private static final String CACHE_CONTROL_AGE = "max-age=0";
 
-
     //构造方法私有
     private Api(int hostType) {
         //开启Log
         HttpLoggingInterceptor logInterceptor = new HttpLoggingInterceptor();
         logInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         //缓存
-        File cacheFile = new File(PowerApplication.getGlobalContext().getCacheDir(), "cache");
-        Cache cache = new Cache(cacheFile, 1024 * 1024 * 100); //100Mb
+        File cacheFile = new File(PowerApplication.getGlobalContext().getCacheDir(), "okCache");
+        Cache cache = new Cache(cacheFile, 1024 * 1024 * 20);
         //增加头部信息
         Interceptor headerInterceptor =new Interceptor() {
             @Override
@@ -95,6 +104,8 @@ public class Api {
                 .addInterceptor(headerInterceptor)
                 .addInterceptor(logInterceptor)
                 .cache(cache)
+                .sslSocketFactory(getTrustAllSslFactory(), (X509TrustManager) trustAllCers[0])
+                .hostnameVerifier(hostnameVerifier)
                 .retryOnConnectionFailure(true)
                 .build();
 
@@ -118,5 +129,116 @@ public class Api {
             sRetrofitManager.put(hostType, retrofitManager);
         }
         return retrofitManager.apiService;
+    }
+
+    private SSLSocketFactory getTrustAllSslFactory() {
+        SSLContext sslContext = null;
+        try {
+            sslContext = SSLContext.getInstance("TLS");
+            sslContext.init(null,trustAllCers,new SecureRandom());
+            return sslContext.getSocketFactory();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    private TrustManager[] trustAllCers = new TrustManager[]{
+            new X509TrustManager() {
+                @Override
+                public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {
+
+                }
+
+                @Override
+                public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException {
+
+                }
+
+                @Override
+                public X509Certificate[] getAcceptedIssuers() {
+                    return new X509Certificate[0];
+                }
+            }
+    };
+
+    private HostnameVerifier hostnameVerifier = new HostnameVerifier() {
+        @Override
+        public boolean verify(String hostname, SSLSession session) {
+            return true;
+        }
+    };
+
+    public X509TrustManager getTrustManager() {
+        try
+        {
+            List<InputStream> certificates = new ArrayList<>();
+            certificates.add(PowerApplication.getGlobalContext().getAssets().open("certfile.cer"));
+
+            CertificateFactory certificateFactory = CertificateFactory.getInstance("X.509");
+            KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
+            keyStore.load(null);
+            int index = 0;
+            for (InputStream certificate : certificates)
+            {
+                String certificateAlias = Integer.toString(index++);
+                keyStore.setCertificateEntry(certificateAlias, certificateFactory.generateCertificate(certificate));
+
+                try
+                {
+                    if (certificate != null)
+                        certificate.close();
+                } catch (IOException e){
+                }
+            }
+
+
+            TrustManagerFactory trustManagerFactory =
+                    TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+            trustManagerFactory.init(keyStore);
+
+            return null;
+//            SSLContext sslContext = SSLContext.getInstance("TLS");
+//            sslContext.init(null,trustManagerFactory.getTrustManagers(),new SecureRandom());
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+            return null;
+        }
+
+    }
+
+    public void getsslContextFactory(Context context) {
+        try
+        {
+            List<InputStream> certificates = new ArrayList<>();
+            certificates.add(context.getAssets().open("certfile.cer"));
+
+            CertificateFactory certificateFactory = CertificateFactory.getInstance("X.509");
+            KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
+            keyStore.load(null);
+            int index = 0;
+            for (InputStream certificate : certificates)
+            {
+                String certificateAlias = Integer.toString(index++);
+                keyStore.setCertificateEntry(certificateAlias, certificateFactory.generateCertificate(certificate));
+
+                try
+                {
+                    if (certificate != null)
+                        certificate.close();
+                } catch (IOException e){
+                }
+            }
+
+            SSLContext sslContext = SSLContext.getInstance("TLS");
+            TrustManagerFactory trustManagerFactory =
+                    TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+            trustManagerFactory.init(keyStore);
+            sslContext.init(null,trustManagerFactory.getTrustManagers(),new SecureRandom());
+//            okHttpClient.setSslSocketFactory(sslContext.getSocketFactory());
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 }

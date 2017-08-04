@@ -1,4 +1,4 @@
-package com.soul.learn.power.ui.main.holder;
+package com.soul.learn.power.ui.mainauto.holder;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

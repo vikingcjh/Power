@@ -1,4 +1,4 @@
-package com.soul.learn.power.ui.main.holder;
+package com.soul.learn.power.ui.mainauto.holder;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -14,10 +14,6 @@ import com.soul.learn.power.R;
 import com.soul.learn.power.bean.AppDetailsModel;
 import com.soul.learn.power.constants.UiConstants;
 import com.soul.learn.power.util.ImageLoaderUtils;
-
-
-import java.util.HashMap;
-import java.util.Map;
 
 
 public class CatgViewHolder extends RecyclerView.ViewHolder{

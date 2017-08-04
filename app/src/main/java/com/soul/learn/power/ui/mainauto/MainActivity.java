@@ -1,7 +1,6 @@
-package com.soul.learn.power.ui.main;
+package com.soul.learn.power.ui.mainauto;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -10,8 +9,8 @@ import com.bumptech.glide.Glide;
 import com.soul.learn.power.R;
 import com.soul.learn.power.bean.NaviInfo;
 import com.soul.learn.power.ui.base.BaseActivity;
-import com.soul.learn.power.ui.main.adapter.MainFragmentAdapter;
-import com.soul.learn.power.ui.main.model.MainModel;
+import com.soul.learn.power.ui.mainauto.adapter.MainFragmentAdapter;
+import com.soul.learn.power.ui.mainauto.model.MainModel;
 import com.soul.learn.power.widget.custom.CstNavibar;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.soul.learn.power.ui.main.presenter;
+package com.soul.learn.power.ui.mainauto;
 
 import android.widget.Toast;
 
@@ -6,7 +6,6 @@ import android.widget.Toast;
 import com.soul.learn.common.mvp.BasePresenter;
 import com.soul.learn.power.PowerApplication;
 import com.soul.learn.power.bean.AppDetailsModel;
-import com.soul.learn.power.ui.main.contract.CategoryContract;
 
 import java.util.List;
 
@@ -22,10 +21,10 @@ import io.reactivex.schedulers.Schedulers;
  * Created by chenjianhua on 2017/5/19.
  */
 
-public class CategoryPresenter extends BasePresenter<CategoryContract.Model,CategoryContract.View> {
+public class MainPresenter extends BasePresenter<MainContract.Model,MainContract.View> {
 
 
-    public CategoryPresenter(CategoryContract.Model model , CategoryContract.View rootView) {
+    public MainPresenter(MainContract.Model model ,MainContract.View rootView) {
         super(model, rootView);
     }
 
@@ -54,7 +53,13 @@ public class CategoryPresenter extends BasePresenter<CategoryContract.Model,Cate
 
                     @Override
                     public void onNext(@NonNull List<AppDetailsModel> result) {
-                        mRootView.notifyCatgData(result);
+                        Toast.makeText(PowerApplication.getGlobalContext(),
+                                result.get(0).name,
+                                Toast.LENGTH_SHORT)
+                                .show();
+
+                        mRootView.showData(result.get(0).name+result.get(0).pkg);
+
                     }
 
                     @Override
@@ -68,51 +73,10 @@ public class CategoryPresenter extends BasePresenter<CategoryContract.Model,Cate
 
                     @Override
                     public void onComplete() {
-
-                    }
-                });
-
-    }
-
-    public void loadData(int page,int size) {
-        mModel.getAppList(size,page)
-                .subscribeOn(Schedulers.io())
-                .doOnSubscribe(new Consumer<Disposable>() {
-                    @Override
-                    public void accept(@NonNull Disposable disposable) throws Exception {
-                        mRootView.showLoadMore();
-                    }
-                })
-                .subscribeOn(AndroidSchedulers.mainThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .doAfterTerminate(new Action() {
-                    @Override
-                    public void run() throws Exception {
-                        mRootView.hideLoadMore();
-                    }
-                })
-                .subscribe(new Observer<List<AppDetailsModel>>() {
-                    @Override
-                    public void onSubscribe(@NonNull Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(@NonNull List<AppDetailsModel> result) {
-                        mRootView.notifyLoadMoreData(result);
-                    }
-
-                    @Override
-                    public void onError(@NonNull Throwable e) {
                         Toast.makeText(PowerApplication.getGlobalContext(),
-                                e.getMessage(),
+                                "Completed",
                                 Toast.LENGTH_SHORT)
                                 .show();
-
-                    }
-
-                    @Override
-                    public void onComplete() {
 
                     }
                 });

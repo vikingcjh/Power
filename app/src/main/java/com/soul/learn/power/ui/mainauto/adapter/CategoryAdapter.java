@@ -1,4 +1,4 @@
-package com.soul.learn.power.ui.main.adapter;
+package com.soul.learn.power.ui.mainauto.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
@@ -11,8 +11,8 @@ import android.view.ViewGroup;
 import com.soul.learn.power.R;
 import com.soul.learn.power.bean.AppDetailsModel;
 import com.soul.learn.power.log.LogUtil;
-import com.soul.learn.power.ui.main.holder.CatgViewHolder;
-import com.soul.learn.power.ui.main.holder.FooterCatgViewHolder;
+import com.soul.learn.power.ui.mainauto.holder.CatgViewHolder;
+import com.soul.learn.power.ui.mainauto.holder.FooterCatgViewHolder;
 
 import java.util.List;
 

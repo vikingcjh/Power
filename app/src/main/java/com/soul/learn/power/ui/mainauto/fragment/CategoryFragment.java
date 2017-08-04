@@ -1,13 +1,5 @@
-package com.soul.learn.power.ui.main.fragment;
+package com.soul.learn.power.ui.mainauto.fragment;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.database.Cursor;
-import android.os.Bundle;
-import android.support.v4.content.CursorLoader;
-import android.support.v4.content.Loader;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SimpleItemAnimator;
@@ -17,10 +9,10 @@ import android.util.Log;
 import com.soul.learn.power.R;
 import com.soul.learn.power.bean.AppDetailsModel;
 import com.soul.learn.power.ui.base.BaseFragment;
-import com.soul.learn.power.ui.main.adapter.CategoryAdapter;
-import com.soul.learn.power.ui.main.contract.CategoryContract;
-import com.soul.learn.power.ui.main.model.CategoryModel;
-import com.soul.learn.power.ui.main.presenter.CategoryPresenter;
+import com.soul.learn.power.ui.mainauto.adapter.CategoryAdapter;
+import com.soul.learn.power.ui.mainauto.contract.CategoryContract;
+import com.soul.learn.power.ui.mainauto.model.CategoryModel;
+import com.soul.learn.power.ui.mainauto.presenter.CategoryPresenter;
 import com.soul.learn.power.widget.custom.CstItemDecoration;
 import com.soul.learn.power.widget.custom.CstRcvOnScrollListener;
 

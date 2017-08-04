@@ -1,4 +1,4 @@
-package com.soul.learn.power.ui.main.adapter;
+package com.soul.learn.power.ui.mainauto.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

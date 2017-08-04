@@ -3,30 +3,19 @@ package com.soul.learn.power.sdkmanager;
 
 import android.widget.Toast;
 
-import com.soul.learn.common.mvp.BaseModel;
 import com.soul.learn.power.PowerApplication;
-import com.soul.learn.power.bean.AppDetailsModel;
-import com.soul.learn.power.bean.BaseResult;
 import com.soul.learn.power.bean.SdkUpdateBean;
 import com.soul.learn.power.busevent.ShowUserDbEvent;
-import com.soul.learn.power.db.entity.User;
 import com.soul.learn.power.net.Api;
-import com.soul.learn.power.net.ApiConstants;
 import com.soul.learn.power.net.HostType;
-import com.soul.learn.power.ui.main.contract.CategoryContract;
 
 import org.greenrobot.eventbus.EventBus;
-
-import java.util.List;
 
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Action;
-import io.reactivex.functions.Consumer;
-import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
 /**

@@ -1,4 +1,4 @@
-package com.soul.learn.power.ui.main.model;
+package com.soul.learn.power.ui.mainauto.model;
 
 
 import com.soul.learn.common.mvp.BaseModel;
@@ -7,7 +7,7 @@ import com.soul.learn.power.bean.BaseResult;
 import com.soul.learn.power.net.Api;
 import com.soul.learn.power.net.ApiConstants;
 import com.soul.learn.power.net.HostType;
-import com.soul.learn.power.ui.main.contract.CategoryContract;
+import com.soul.learn.power.ui.mainauto.contract.CategoryContract;
 
 import java.util.List;
 

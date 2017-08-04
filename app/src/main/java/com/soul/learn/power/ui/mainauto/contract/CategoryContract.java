@@ -1,4 +1,4 @@
-package com.soul.learn.power.ui.main.contract;
+package com.soul.learn.power.ui.mainauto.contract;
 
 import com.soul.learn.common.mvp.IModel;
 import com.soul.learn.common.mvp.IView;

@@ -15,6 +15,8 @@ import android.view.ViewGroup;
 
 import com.soul.learn.common.mvp.IPresenter;
 
+import butterknife.ButterKnife;
+
 
 /**
  * Created by chenjianhua on 2017/6/13.
@@ -83,9 +85,10 @@ public abstract class BaseFragment<P extends IPresenter> extends Fragment{
         if (rootView == null)
             rootView = inflater.inflate(getLayoutId(), container, false);
 
+        ButterKnife.bind(this, rootView);
+
         initPresenter();
         initWidget();
-        startModel();
         return rootView;
     }
 
@@ -93,7 +96,7 @@ public abstract class BaseFragment<P extends IPresenter> extends Fragment{
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        startModel();
     }
 
 

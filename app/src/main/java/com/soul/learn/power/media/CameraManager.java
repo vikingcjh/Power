@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
 
+import com.soul.learn.power.log.LogUtil;
+
 /**
  * Created by cjh on 2017/8/4.
  */
@@ -25,7 +27,10 @@ public class CameraManager {
     public static Camera getCameraInstance(){
         Camera c = null;
         try {
-            c = Camera.open(); // attempt to get a Camera instance
+            LogUtil.i("Camera.getNumberOfCameras()= "+Camera.getNumberOfCameras());
+            c = Camera.open(0); // attempt to get a Camera instance
+            Camera.Parameters parameters= c.getParameters();
+//            parameters.set();
         }
         catch (Exception e){
             // Camera is not available (in use or does not exist)

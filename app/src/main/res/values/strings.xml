@@ -98,4 +98,9 @@
     <string name="detail_app_install">安装</string>
     <string name="detail_app_update">更新</string>
     <string name="detail_app_uninstall">卸载</string>
+
+
+
+    <string name="record">Record</string>
+    <string name="stop">Stop</string>
 </resources>

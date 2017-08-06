@@ -29,8 +29,12 @@ public class CameraManager {
         try {
             LogUtil.i("Camera.getNumberOfCameras()= "+Camera.getNumberOfCameras());
             c = Camera.open(0); // attempt to get a Camera instance
+            c.setDisplayOrientation(90);
             Camera.Parameters parameters= c.getParameters();
-//            parameters.set();
+            parameters.setRotation(90);
+            parameters.setFlashMode(Camera.Parameters.FOCUS_MODE_AUTO);
+
+            c.setParameters(parameters);
         }
         catch (Exception e){
             // Camera is not available (in use or does not exist)

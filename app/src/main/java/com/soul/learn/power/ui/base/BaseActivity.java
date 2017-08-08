@@ -1,9 +1,11 @@
 package com.soul.learn.power.ui.base;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.view.Window;
 
 import com.soul.learn.common.mvp.IPresenter;
 
@@ -30,6 +32,10 @@ public abstract class BaseActivity<P extends IPresenter> extends FragmentActivit
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // 无标题
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        // 设置竖屏
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 //        doBeforeSetcontentView();
         setContentView(getLayoutId());

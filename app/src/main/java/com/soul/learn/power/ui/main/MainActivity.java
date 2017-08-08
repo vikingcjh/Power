@@ -38,6 +38,7 @@ import com.soul.learn.power.test.ViolateTest;
 import com.soul.learn.power.ui.mainauto.adapter.MainFragmentAdapter;
 import com.soul.learn.power.ui.vediorecord.CameraRecordFragment;
 import com.soul.learn.power.ui.vediorecord.CameraTextureFragment;
+import com.soul.learn.power.ui.videolive.VideoLiveFragment;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -100,7 +101,8 @@ public class MainActivity extends AppCompatActivity {
     private void initFragment(Bundle savedInstanceState){
         List<Fragment> fragments = new ArrayList<>();
 
-        fragments.add(new CameraRecordFragment());
+        fragments.add(VideoLiveFragment.newInstance());
+//        fragments.add(new CameraRecordFragment());
 //        fragments.add(new CameraTextureFragment());
 
         mViewPager.setAdapter(new ViewpagerAdapter(getSupportFragmentManager(),fragments));

@@ -175,7 +175,7 @@ public class VideoLiveFragment extends BaseFragment implements VideoLiveContract
             for (int i=0; i<list.size();i++) {
                 LogUtil.i("key "+i +" ="+list.get(i).getName());
             }
-            result.get("android.jpeg.thumbnailSize")
+//            result.get("android.jpeg.thumbnailSize");
 
             super.onCaptureCompleted(session, request, result);
 

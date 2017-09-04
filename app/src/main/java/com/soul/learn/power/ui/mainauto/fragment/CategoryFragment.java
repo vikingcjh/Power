@@ -97,7 +97,7 @@ public class CategoryFragment extends BaseFragment<CategoryPresenter> implements
 
     @Override
     public void startModel() {
-        if (id == 1) mPresenter.loadData(pageIndex+1,PAGE_SIZE);
+        if (id == 1 || id==0) mPresenter.loadData(pageIndex+1,PAGE_SIZE);
     }
 
     @Override

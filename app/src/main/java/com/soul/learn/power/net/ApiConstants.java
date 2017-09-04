@@ -6,9 +6,9 @@ package com.soul.learn.power.net;
  */
 
 public class ApiConstants {
-    public static final String STORE_HOST = "";
+    public static final String STORE_HOST = "http://lecar.letvstore.com/";
     public static final String VEDIO_HOST = "";
-    public static final String SDK_HOST = "";
+    public static final String SDK_HOST = "https://111.206.210.227/";
 
     public static final String STORE_CODE = "dk_h_test";
 

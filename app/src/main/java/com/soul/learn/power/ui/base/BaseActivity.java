@@ -35,7 +35,7 @@ public abstract class BaseActivity<P extends IPresenter> extends FragmentActivit
         // 无标题
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         // 设置竖屏
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+//        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 //        doBeforeSetcontentView();
         setContentView(getLayoutId());

@@ -44,11 +44,11 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         mContext = this;
         mCstNavibar = (CstNavibar) findViewById(R.id.cst_navibar);
         mCstNavibar.setInterface(this);
-        mNaviInfos.add(new NaviInfo(0,CstNavibar.NAVI_TYPE_CAT_TEXT,"首页","com.soul.learn.power.ui.main.fragment.CategoryFragment"));
-        mNaviInfos.add(new NaviInfo(1,CstNavibar.NAVI_TYPE_CAT_TEXT,"导航地图","com.soul.learn.power.ui.main.fragment.CategoryFragment"));
-        mNaviInfos.add(new NaviInfo(2,CstNavibar.NAVI_TYPE_CAT_TEXT,"音乐播放","com.soul.learn.power.ui.main.fragment.CategoryFragment"));
-        mNaviInfos.add(new NaviInfo(3,CstNavibar.NAVI_TYPE_CAT_TEXT,"新闻阅读","com.soul.learn.power.ui.main.fragment.CategoryFragment"));
-        mNaviInfos.add(new NaviInfo(4,CstNavibar.NAVI_TYPE_LOCAL_ICON,"设置","com.soul.learn.power.ui.main.fragment.CategoryFragment"));
+        mNaviInfos.add(new NaviInfo(0,CstNavibar.NAVI_TYPE_CAT_TEXT,"首页","com.soul.learn.power.ui.mainauto.fragment.CategoryFragment"));
+        mNaviInfos.add(new NaviInfo(1,CstNavibar.NAVI_TYPE_CAT_TEXT,"导航地图","com.soul.learn.power.ui.mainauto.fragment.CategoryFragment"));
+        mNaviInfos.add(new NaviInfo(2,CstNavibar.NAVI_TYPE_CAT_TEXT,"音乐播放","com.soul.learn.power.ui.mainauto.fragment.CategoryFragment"));
+        mNaviInfos.add(new NaviInfo(3,CstNavibar.NAVI_TYPE_CAT_TEXT,"新闻阅读","com.soul.learn.power.ui.mainauto.fragment.CategoryFragment"));
+        mNaviInfos.add(new NaviInfo(4,CstNavibar.NAVI_TYPE_LOCAL_ICON,"设置","com.soul.learn.power.ui.mainauto.fragment.CategoryFragment"));
         mCstNavibar.initTabs(mNaviInfos);
 
         mViewPager = (ViewPager) findViewById(R.id.main_viewpager);
